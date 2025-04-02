@@ -7,27 +7,26 @@ let ingressosRestantes = {
 function comprar() {
     let opcoesDeIngressos = document.getElementById('tipo-ingresso').value;
     let quantidadeDesejada = parseInt(document.getElementById('qtd').value);
-    let quantidadeDaPista = Number(document.getElementById('qtd-pista').textContent);
-    ingressosRestantes['pista'].quantidade = cadeiraInferior
 
-    let cadeiraSuperior = Number(document.getElementById('qtd-superior').textContent);
-    ingressosRestantes['superior'].quantidade = quantidadeDaPista;
+    let quantidade = Number(document.getElementById(`qtd-${opcoesDeIngressos}`).textContent);
+    ingressosRestantes[opcoesDeIngressos].quantidade = quantidade;
 
-    let cadeiraInferior = Number(document.getElementById('qtd-inferior').textContent);
-
-    ingressosRestantes['inferior'].quantidade = cadeiraSuperior;
+    if (quantidadeDesejada != Number) {
+        alert('Por favor escolha um número maior que 1')
+    
+    };
 
     if (quantidadeDesejada > ingressosRestantes[opcoesDeIngressos].quantidade) {
         alert('Quantidade de ingresso indisponível')
     } else {
         if (opcoesDeIngressos == 'inferior') {
-            document.getElementById('qtd-inferior').innerHTML = cadeiraInferior - quantidadeDesejada;
+            document.getElementById('qtd-inferior').innerHTML = quantidade - quantidadeDesejada;
         } else if (opcoesDeIngressos == 'pista') {
-            document.getElementById('qtd-pista').innerHTML = quantidadeDaPista - quantidadeDesejada;
+            document.getElementById('qtd-pista').innerHTML = quantidade - quantidadeDesejada;
 
     
         } else if (opcoesDeIngressos == 'superior') {
-            document.getElementById('qtd-superior').innerHTML = cadeiraSuperior - quantidadeDesejada;
+            document.getElementById('qtd-superior').innerHTML = quantidade - quantidadeDesejada;
 
         }
     
