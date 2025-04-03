@@ -1,3 +1,4 @@
+
 let ingressosRestantes = {
     'pista': {quantidade: 0},
     'superior': {quantidade: 0},
@@ -6,15 +7,11 @@ let ingressosRestantes = {
 
 function comprar() {
     let opcoesDeIngressos = document.getElementById('tipo-ingresso').value;
-    let quantidadeDesejada = parseInt(document.getElementById('qtd').value);
+    let quantidadeDesejada = Number(document.getElementById('qtd').value);
 
     let quantidade = Number(document.getElementById(`qtd-${opcoesDeIngressos}`).textContent);
     ingressosRestantes[opcoesDeIngressos].quantidade = quantidade;
 
-    if (quantidadeDesejada != Number) {
-        alert('Por favor escolha um número maior que 1')
-    
-    };
 
     if (quantidadeDesejada > ingressosRestantes[opcoesDeIngressos].quantidade) {
         alert('Quantidade de ingresso indisponível')
@@ -29,8 +26,9 @@ function comprar() {
             document.getElementById('qtd-superior').innerHTML = quantidade - quantidadeDesejada;
 
         }
-    
+        document.getElementById('qtd').value = '';
+
     }
-console.log(ingressosRestantes[opcoesDeIngressos].quantidade);
+console.log(quantidadeDesejada);
 
 }
